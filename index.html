@@ -9,10 +9,11 @@
             font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
             height: 100vh;
             background-color: #f0f0f0;
             margin: 0;
+            flex-direction: column;
         }
         .container {
             text-align: center;
@@ -22,6 +23,7 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             width: 80%;
             max-width: 500px;
+            margin-bottom: 20px;
         }
         textarea {
             width: 100%;
@@ -40,9 +42,17 @@
 <body>
     <div class="container">
         <h1>Traductor a Rúnico Vikingo</h1>
+        <h2>Texto a Vikingo</h2>
         <textarea id="inputText" rows="4" placeholder="Escribe tu texto aquí..."></textarea>
-        <button onclick="translateToViking()">Traducir</button>
+        <button onclick="translateToViking()">Traducir a Vikingo</button>
         <div class="result" id="outputText"></div>
+    </div>
+    
+    <div class="container">
+        <h2>Vikingo a Texto</h2>
+        <textarea id="inputViking" rows="4" placeholder="Escribe tu texto vikingo aquí..."></textarea>
+        <button onclick="translateToText()">Traducir a Texto</button>
+        <div class="result" id="outputTextViking"></div>
     </div>
 
     <script>
@@ -54,6 +64,10 @@
             'Y': 'ᚤ', 'Z': 'ᛉ'
         };
 
+        const reverseTranslations = Object.fromEntries(
+            Object.entries(translations).map(([key, value]) => [value, key])
+        );
+
         function translateToViking() {
             const inputText = document.getElementById("inputText").value.toUpperCase();
             let translatedText = "";
@@ -63,6 +77,17 @@
             }
 
             document.getElementById("outputText").innerText = translatedText;
+        }
+
+        function translateToText() {
+            const inputViking = document.getElementById("inputViking").value;
+            let translatedText = "";
+
+            for (let char of inputViking) {
+                translatedText += reverseTranslations[char] || char;
+            }
+
+            document.getElementById("outputTextViking").innerText = translatedText;
         }
     </script>
 </body>
