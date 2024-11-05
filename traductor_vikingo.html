@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traductor de Texto a Vikingo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 500px;
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            resize: none;
+        }
+        .result {
+            font-size: 1.5em;
+            margin-top: 10px;
+            word-wrap: break-word;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Traductor a Rúnico Vikingo</h1>
+        <textarea id="inputText" rows="4" placeholder="Escribe tu texto aquí..."></textarea>
+        <button onclick="translateToViking()">Traducir</button>
+        <div class="result" id="outputText"></div>
+    </div>
+
+    <script>
+        const translations = {
+            'A': 'ᚨ', 'B': 'ᛒ', 'C': 'ᚲ', 'D': 'ᛞ', 'E': 'ᛖ', 'F': 'ᚠ',
+            'G': 'ᚷ', 'H': 'ᚺ', 'I': 'ᛁ', 'J': 'ᛃ', 'K': 'ᚴ', 'L': 'ᛚ',
+            'M': 'ᛗ', 'N': 'ᚾ', 'O': 'ᛟ', 'P': 'ᛈ', 'Q': 'ᛩ', 'R': 'ᚱ',
+            'S': 'ᛋ', 'T': 'ᛏ', 'U': 'ᚢ', 'V': 'ᚡ', 'W': 'ᚹ', 'X': 'ᛪ',
+            'Y': 'ᚤ', 'Z': 'ᛉ'
+        };
+
+        function translateToViking() {
+            const inputText = document.getElementById("inputText").value.toUpperCase();
+            let translatedText = "";
+
+            for (let char of inputText) {
+                translatedText += translations[char] || char;
+            }
+
+            document.getElementById("outputText").innerText = translatedText;
+        }
+    </script>
+</body>
+</html>
