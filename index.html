@@ -30,9 +30,10 @@
             padding: 10px;
             margin: 10px 0;
             resize: none;
+            height: 80px; /* Altura constante para las áreas de texto */
         }
         .result {
-            font-size: 2em; /* Aumenta el tamaño de la fuente */
+            font-size: 2em; /* Tamaño de la fuente */
             margin-top: 10px;
             word-wrap: break-word;
             color: #333;
@@ -43,14 +44,14 @@
     <div class="container">
         <h1>Traductor a Rúnico Vikingo</h1>
         <h2>Texto a Vikingo</h2>
-        <textarea id="inputText" rows="4" placeholder="Escribe tu texto aquí..."></textarea>
+        <textarea id="inputText" placeholder="Escribe tu texto aquí..."></textarea>
         <button onclick="translateToViking()">Traducir a Vikingo</button>
         <div class="result" id="outputText"></div>
     </div>
-    
+
     <div class="container">
         <h2>Vikingo a Texto</h2>
-        <textarea id="inputViking" rows="4" placeholder="Escribe tu texto vikingo aquí..."></textarea>
+        <textarea id="inputViking" placeholder="Escribe tu texto vikingo aquí..."></textarea>
         <button onclick="translateToText()">Traducir a Texto</button>
         <div class="result" id="outputTextViking"></div>
     </div>
